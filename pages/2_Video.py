@@ -17,12 +17,13 @@ annotation_data['properties.metadata.S3Key'].iloc[3] = "EX1708/EX1708_VID_201709
 annotation_data['properties.metadata.S3Key'].iloc[4] = "EX1708/EX1708_VID_20170921T220500Z_ROVHD_Low.mp4" # for testing
 
 
-mp4 = annotation_data[annotation_data['properties.metadata.S3Key'].str.contains(".mov")]
-videos = pd.concat([mp4, annotation_data[annotation_data['properties.metadata.S3Key'].str.contains(".mp4")]])
+videos = annotation_data[annotation_data['properties.metadata.S3Key'].str.contains(".mp4")]
+# videos = pd.concat([mp4, annotation_data[annotation_data['properties.metadata.S3Key'].str.contains(".mp4")]])
 
 video_list = []
 for i in videos['properties.metadata.S3Key']:
     video_list.append("https://d9we9npuc9dc.cloudfront.net/{}".format(i))
+
 
 video_choice = st.sidebar.number_input("Which Video?", 0)
 
