@@ -2,15 +2,10 @@ import streamlit as st
 import requests
 import pandas as pd
 import json
+from pathlib import Path
 
-st.title('Annotation Explorer')
-
-tag_choice = st.sidebar.selectbox("Tags", options=["Aaptos aaptos", "Corallis polyporum",
-                                                   "Hypodytes carinatus", "Lichen ater",
-                                                   "Lydia annulipes", "Poritella decidua",
-                                                   "Verrucula maritimaria"])
-
-
+st.set_page_config(
+    page_title="Annotation Explorer")
 
 @st.cache
 def get_data():
@@ -21,15 +16,11 @@ def get_data():
     annotations_final = annotations_flat
     return annotations_final
 
-df = get_data()
 
-annotation_data = df[[isinstance(x, dict) and (tag_choice in x.keys()) for x in df['properties.metadata.tags']]]
+def read_markdown_file(markdown_file):
+    return Path(markdown_file).read_text()
 
-images = annotation_data[annotation_data['properties.metadata.S3Key'].str.contains(".JPG")]
+intro_markdown = read_markdown_file("overview.md")
 
-image_list = []
-for i in images['properties.metadata.S3Key']:
-    image_list.append("https://d9we9npuc9dc.cloudfront.net/{}".format(i))
+st.markdown(intro_markdown, unsafe_allow_html=True)
 
-
-st.image(image_list)
