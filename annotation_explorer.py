@@ -23,4 +23,4 @@ def read_markdown_file(markdown_file):
 intro_markdown = read_markdown_file("overview.md")
 
 st.markdown(intro_markdown, unsafe_allow_html=True)
-
+st.image("application_diagram.png")
