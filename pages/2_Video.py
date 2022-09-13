@@ -1,6 +1,6 @@
 import streamlit as st
 from annotation_explorer import get_data
-#import pandas as pd
+import pandas as pd
 
 st.title("Video")
 
