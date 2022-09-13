@@ -37,4 +37,4 @@ video_choice = st.sidebar.number_input("Which Video?", 0)
 try:
     st.video(video_list[video_choice])
 except:
-    print("Try Another Video")
+    st.text("Try Another Video")
