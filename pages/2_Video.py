@@ -34,4 +34,7 @@ for i in videos['properties.metadata.S3Key']:
 video_choice = st.sidebar.number_input("Which Video?", 0)
 
 # Plot Videos
-st.video(video_list[video_choice])
+try:
+    st.video(video_list[video_choice])
+except:
+    print("Try Another Video")
