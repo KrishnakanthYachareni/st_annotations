@@ -44,5 +44,5 @@ st.markdown(intro_markdown, unsafe_allow_html=True)
 st.image("application_diagram.png")
 
 # Plot table of tag counts
-st.text("This is the current set of tags along with the number of times they appear in the data.")
+st.write("This is the current set of tags along with the number of times they appear in the data.")
 st.table(rounded_tags)
