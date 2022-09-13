@@ -1,4 +1,2 @@
-json
-streamlit
 requests
 pandas

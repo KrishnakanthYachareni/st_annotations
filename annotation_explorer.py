@@ -1,12 +1,7 @@
 import streamlit as st
 import requests
 import pandas as pd
-import numpy as np
-import geopandas as gpd
 import json
-from shapely.geometry import shape
-import ast
-import matplotlib.pyplot as plt
 
 st.title('Annotation Explorer')
 
