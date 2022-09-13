@@ -1,5 +1,6 @@
 import streamlit as st
 from annotation_explorer import get_data
+import pandas as pd
 
 tag_choice = st.sidebar.selectbox("Tags", options=["Aaptos aaptos", "Corallis polyporum",
                                                    "Hypodytes carinatus", "Lichen ater",
@@ -13,7 +14,9 @@ annotation_data = df[[isinstance(x, dict) and (tag_choice in x.keys()) for x in 
 annotation_data['properties.metadata.S3Key'].iloc[3] = "EX1708/EX1708_VID_20170921T220500Z_ROVHD_Low.mp4" # for testing
 annotation_data['properties.metadata.S3Key'].iloc[4] = "EX1708/EX1708_VID_20170921T220500Z_ROVHD_Low.mp4" # for testing
 
-videos = annotation_data[annotation_data['properties.metadata.S3Key'].str.contains(".mp4")]
+
+mp4 = annotation_data[annotation_data['properties.metadata.S3Key'].str.contains(".mov")]
+videos = pd.concat([mp4, annotation_data[annotation_data['properties.metadata.S3Key'].str.contains(".mp4")]])
 
 video_list = []
 for i in videos['properties.metadata.S3Key']:
