@@ -1,2 +1,5 @@
 requests
 pandas
+pymongo==3.12.0
+dnspython
+pillow
